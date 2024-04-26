@@ -8,6 +8,8 @@ const app = express();
 
 require("dotenv").config();
 
+const port = process.env.PORT || 3000;
+
 app.get("/", (req, res) => {
   res.send("Hello World from Express");
 });
@@ -24,8 +26,8 @@ mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("Connected to MongoDB");
-    app.listen(3000, () => {
-      console.log("Server is running on port 3000");
+    app.listen(port, () => {
+      console.log("Server is running");
     });
   })
   .catch((error) => {
