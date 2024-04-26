@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const UserPainting = require("./models/userPainting.model");
 const UserScore = require("./models/userScore.model");
 const userPaintingRoute = require("./routes/userPainting.route");
@@ -17,6 +18,9 @@ app.get("/", (req, res) => {
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Enable All CORS Requests
+app.use(cors());
 
 // routes
 app.use("/api/userPainting", userPaintingRoute);
